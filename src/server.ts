@@ -1,15 +1,11 @@
 import   'reflect-metadata';
 import './database'; // .database/index.ts
 import express from 'express';
+import {router} from './routes';
+
 
 const app = express(); 
+app.use(express.json());
+app.use(router);
 
 app.listen(3333, ()=>console.log('server is running!'));
-
-app.get('/',(req,res)=>{
-    res.json({message:'lista de produtos'});
-});
-
-app.post('/',(req, res)=>{
-    res.json({message:'cadastro realizado com sucesso'});
-});
